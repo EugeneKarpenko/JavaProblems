@@ -12,13 +12,17 @@ public class Sort {
 
         System.out.println("Unsorted: " + Arrays.toString(array));
 
+        sort(array);
+
+        System.out.println("Sorted: " + Arrays.toString(array));
+    }
+
+    public static void sort(double[] array) {
         int minItemIndex;
         for (int i = 0; i < ARRAY_LEN; i++) {
             minItemIndex = getIndexOfMinElement(array, i);
             swapElements(array, i, minItemIndex);
         }
-
-        System.out.println("Sorted: " + Arrays.toString(array));
     }
 
     public static double[] createRandomArray(int arraySize) {

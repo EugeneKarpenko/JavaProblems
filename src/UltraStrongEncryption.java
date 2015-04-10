@@ -31,24 +31,15 @@ public class UltraStrongEncryption {
             chars[i] ^= key;
         }
 
-        /*
-            Почему эти варианты не работают?
-            Arrays.toString(chars)
-            chars.toString();
-         */
-
         return String.copyValueOf(chars);
     }
 
     public static String crypt(String message, char[] key) {
         char[] chars = message.toCharArray();
-        int j = 0;
-        for (int i = 0; i < chars.length; i++) {
-            chars[i] ^= key[j++];
 
-            if (j == key.length) {
-                j = 0;
-            }
+        for (int i = 0; i < chars.length; i++) {
+            int tmp = i % key.length;
+            chars[i] ^= key[i % key.length];
         }
 
         return String.copyValueOf(chars);
