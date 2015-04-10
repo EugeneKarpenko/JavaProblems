@@ -38,7 +38,6 @@ public class UltraStrongEncryption {
         char[] chars = message.toCharArray();
 
         for (int i = 0; i < chars.length; i++) {
-            int tmp = i % key.length;
             chars[i] ^= key[i % key.length];
         }
 
