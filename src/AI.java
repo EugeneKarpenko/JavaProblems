@@ -14,11 +14,12 @@ public class AI {
         double minNumber = 0;
         double maxNumber = Math.pow(10, digits);
         double middle;
+        int attempts = 1;
         String answer;
 
         while (true)
         {
-            middle = Math.round((maxNumber + minNumber) / 2);
+            middle = Math.floor((maxNumber + minNumber) / 2);
             System.out.println("Твоё число больше " + middle + "? (y/n)");
             answer = scanner.next();
             if (answer.equals("y")) {
@@ -28,10 +29,12 @@ public class AI {
                 maxNumber = middle;
             }
 
-            if (maxNumber - minNumber < EPSILON + 1) {
-                System.out.println("Твоё число " + minNumber + " :)");
+            if (maxNumber - minNumber < EPSILON) {
+                System.out.println("Твоё число " + minNumber + " :) \n Я угадал за " + attempts + " попыток");
                 return;
             }
+
+            attempts++;
         }
     }
 }
