@@ -25,13 +25,24 @@ public class ImprovedArrayTest {
         improvedArray.add("19");
         improvedArray.add("518");
 
-        String[] array2 = {"4", "42", "1", "465", "38", "328", "82", "51", "118", "108", "19", "518",
-                null, null, null, null, null, null, null, null};
+        ImprovedArray improvedArray2 = new ImprovedArray();
+        improvedArray2.add("4");
+        improvedArray2.add("42");
+        improvedArray2.add("1");
+        improvedArray2.add("465");
+        improvedArray2.add("38");
+        improvedArray2.add("328");
+        improvedArray2.add("82");
+        improvedArray2.add("51");
+        improvedArray2.add("118");
+        improvedArray2.add("108");
+        improvedArray2.add("19");
+        improvedArray2.add("518");
 
         System.out.println(improvedArray.toString());
 
-        Assert.assertEquals(null, improvedArray.get(55));
+        //Assert.assertEquals(null, improvedArray.get(55));
         Assert.assertEquals(12, improvedArray.size());
-        Assert.assertTrue(improvedArray.equals(array2));
+        Assert.assertTrue("arrays equal", improvedArray2.equals(improvedArray));
     }
 }

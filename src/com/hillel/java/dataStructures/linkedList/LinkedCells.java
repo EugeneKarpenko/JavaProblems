@@ -1,20 +1,22 @@
 package com.hillel.java.dataStructures.linkedList;
 
+import com.hillel.java.dataStructures.IDataStructure;
+
 /**
  * Created by EKarpenko on 17.04.2015.
  */
-public class LinkedCells {
+public class LinkedCells implements IDataStructure {
     private Cell head;
     private int counter;
     private Cell tail;
 
-    public LinkedCells(String... values) {
-        for (String value: values) {
+    public LinkedCells(Object... values) {
+        for (Object value: values) {
             add(value);
         }
     }
 
-    public void add(String value) {
+    public void add(Object value) {
         Cell cell = new Cell(value);
 
         if (head == null) {
@@ -56,22 +58,25 @@ public class LinkedCells {
         counter++;
     }
 
-    public String get(int index) {
+    public Object get(int index) {
         return getCellByIndex(index).getValue();
     }
 
-    public void removeByIndex(int index) {
+    public Object removeByIndex(int index) {
         if (index >= counter){
             throw new IndexOutOfBoundsException("index: " + index + ", size: " + counter);
         }
 
+        Object removed;
         if (index == 0) {
+            removed = head;
             head = head.getNext();
             counter--;
-            return;
+            return removed;
         }
 
         Cell preIndexCell = getCellByIndex(index - 1);
+        removed = preIndexCell.getNext();
         if (index == counter - 1) {
             preIndexCell.setNext(null);
             tail = preIndexCell;
@@ -82,6 +87,7 @@ public class LinkedCells {
         }
 
         counter--;
+        return removed;
     }
 
     public int size() {

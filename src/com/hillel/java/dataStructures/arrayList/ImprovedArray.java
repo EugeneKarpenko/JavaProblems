@@ -1,24 +1,62 @@
 package com.hillel.java.dataStructures.arrayList;
 
+import com.hillel.java.dataStructures.IDataStructure;
+
 import java.util.Arrays;
 
 /**
  * Created by EKarpenko on 15.04.2015.
  */
-public class ImprovedArray {
-    private String[] array = new String[10];
+public class ImprovedArray implements IDataStructure {
+    private Object[] array = new Object[10];
     private int arrayCounter = 0;
 
-    public void add(String value) {
-        if (arrayCounter >= array.length) {
-            array = Arrays.copyOf(array, array.length * 2);
-        }
-
+    public void add(Object value) {
+        resize();
         array[arrayCounter++] = value;
     }
 
-    public String get(int index) {
-        return index < arrayCounter ? array[index] : null;
+    public void addByIndex(int index, String value) {
+        if (index > arrayCounter) {
+            throw new IndexOutOfBoundsException("index: " + index + ", size: " + arrayCounter);
+        }
+
+        resize();
+
+        for (int i = size(); i > index; i--)
+        {
+            array[i] = array[i - 1];
+        }
+
+        array[index] = value;
+        arrayCounter++;
+    }
+
+    public Object removeByIndex(int index) {
+        if (index >= arrayCounter) {
+            throw new IndexOutOfBoundsException("index: " + index + ", size: " + arrayCounter);
+        }
+
+        if (index == arrayCounter - 1) {
+            return array[--arrayCounter];
+        }
+
+        Object removedValue = array[index];
+        for (int i = index; i < size(); i++)
+        {
+            array[i] = array[i + 1];
+        }
+
+        arrayCounter--;
+        return removedValue;
+    }
+
+    public Object get(int index) {
+        if (index >= size()) {
+            throw new IndexOutOfBoundsException("index: " + index + ", size: " + size());
+        }
+
+        return array[index];
     }
 
     public int size() {
@@ -26,19 +64,19 @@ public class ImprovedArray {
     }
 
     public boolean equals(Object other) {
-        String[] otherArray = (String[]) other;
-
-        if (array.length != otherArray.length) {
+        if (!(other instanceof ImprovedArray)) {
             return false;
         }
 
-        for (int i = 0; i < array.length; i++)
-        {
-            if (array[i] == null && otherArray[i] == null) {
-                continue;
-            }
+        ImprovedArray otherArray = (ImprovedArray) other;
 
-            if (array[i] == null || otherArray[i] == null || !array[i].equals(otherArray[i])) {
+        if (size() != otherArray.size()) {
+            return false;
+        }
+
+        for (int i = 0; i < size(); i++)
+        {
+            if (!get(i).equals(otherArray.get(i))) {
                 return false;
             }
         }
@@ -55,5 +93,11 @@ public class ImprovedArray {
         }
         string += "]";
         return string;
+    }
+
+    private void resize() {
+        if (arrayCounter >= array.length) {
+            array = Arrays.copyOf(array, array.length * 2);
+        }
     }
 }

@@ -4,10 +4,10 @@ package com.hillel.java.dataStructures.linkedList;
  * Created by EKarpenko on 17.04.2015.
  */
 public class Cell {
-    private String value;
+    private Object value;
     private Cell next;
 
-    public Cell(String value) {
+    public Cell(Object value) {
         this.value = value;
     }
 
@@ -23,7 +23,7 @@ public class Cell {
         return next != null;
     }
 
-    public String getValue() {
+    public Object getValue() {
         return value;
     }
 }
