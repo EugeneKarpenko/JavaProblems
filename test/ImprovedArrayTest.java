@@ -1,10 +1,16 @@
+import com.hillel.java.dataStructures.arrayList.ImprovedArray;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
  * Created by EKarpenko on 17.04.2015.
  */
 public class ImprovedArrayTest {
-    public void main(String[] args) {
+
+    @Test
+    public void arrTest() {
+        System.out.println("asd test running");
+
         ImprovedArray improvedArray = new ImprovedArray();
         improvedArray.add("4");
         improvedArray.add("42");
@@ -23,13 +29,9 @@ public class ImprovedArrayTest {
                 null, null, null, null, null, null, null, null};
 
         System.out.println(improvedArray.toString());
-        System.out.println(improvedArray.get(55));
-        System.out.println(improvedArray.size());
-        System.out.println(improvedArray.equals(array2));
-    }
 
-    @Test
-    public void asd() {
-        System.out.println("asd test running");
+        Assert.assertEquals(null, improvedArray.get(55));
+        Assert.assertEquals(12, improvedArray.size());
+        Assert.assertTrue(improvedArray.equals(array2));
     }
 }

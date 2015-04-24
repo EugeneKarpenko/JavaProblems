@@ -1,3 +1,5 @@
+package com.hillel.java;
+
 /**
  * Created by Eugene Karpenko on 15.04.2015.
  */

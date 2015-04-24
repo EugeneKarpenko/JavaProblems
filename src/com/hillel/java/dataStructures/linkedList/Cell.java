@@ -1,4 +1,4 @@
-package com.hillel.java;
+package com.hillel.java.dataStructures.linkedList;
 
 /**
  * Created by EKarpenko on 17.04.2015.

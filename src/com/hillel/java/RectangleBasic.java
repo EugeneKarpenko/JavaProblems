@@ -1,3 +1,5 @@
+package com.hillel.java;
+
 /**
  * Created by Eugene Karpenko on 15.04.2015.
  */
@@ -17,7 +19,7 @@ public class RectangleBasic {
         double width = (PERIMETER + Math.sqrt(d)) / 4;
         double height = (PERIMETER - Math.sqrt(d)) / 4;
 
-        System.out.println("Rectangle width: " + width);
-        System.out.println("Rectangle height: " + height);
+        System.out.println("com.hillel.java.Rectangle width: " + width);
+        System.out.println("com.hillel.java.Rectangle height: " + height);
     }
 }

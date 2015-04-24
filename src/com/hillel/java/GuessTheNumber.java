@@ -1,3 +1,5 @@
+package com.hillel.java;
+
 import java.util.Scanner;
 
 /**
