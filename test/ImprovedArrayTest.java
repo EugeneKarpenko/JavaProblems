@@ -44,5 +44,9 @@ public class ImprovedArrayTest {
         //Assert.assertEquals(null, improvedArray.get(55));
         Assert.assertEquals(12, improvedArray.size());
         Assert.assertTrue("arrays equal", improvedArray2.equals(improvedArray));
+
+        for (Object num:improvedArray) {
+            System.out.println(num);
+        }
     }
 }

@@ -1,13 +1,15 @@
 package com.hillel.java.dataStructures.arrayList;
 
+import com.hillel.java.dataStructures.ArrayIterator;
 import com.hillel.java.dataStructures.IDataStructure;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  * Created by EKarpenko on 15.04.2015.
  */
-public class ImprovedArray implements IDataStructure {
+public class ImprovedArray implements IDataStructure, Iterable {
     private Object[] array = new Object[10];
     private int arrayCounter = 0;
 
@@ -86,10 +88,10 @@ public class ImprovedArray implements IDataStructure {
 
     public String toString() {
         String string = "[";
-        for (int i = 0; i < array.length; i++)
+        for (int i = 0; i < size(); i++)
         {
-            string += array[i] != null ? array[i] : " ";
-            string += (i < array.length - 1 ? ", " : "");
+            string += get(i) != null ? get(i).toString() : " ";
+            string += (i < size() - 1 ? ", " : "");
         }
         string += "]";
         return string;
@@ -99,5 +101,10 @@ public class ImprovedArray implements IDataStructure {
         if (arrayCounter >= array.length) {
             array = Arrays.copyOf(array, array.length * 2);
         }
+    }
+
+    @Override
+    public Iterator iterator() {
+        return new ArrayIterator(this);
     }
 }
